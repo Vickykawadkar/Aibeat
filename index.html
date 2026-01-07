@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+
+    <div class="bg-stars" id="bgStars"></div>
+
+    <div class="container">
+        <div id="screen1" class="screen active">
+            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_st960u97.json" background="transparent" speed="1" style="width: 250px; height: 250px;" loop autoplay></lottie-player>
+            <p class="loading-text">Building something special... 🌸</p>
+        </div>
+
+        <div id="screen2" class="screen">
+            <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_8as9p7nu.json" background="transparent" speed="1" style="width: 250px; height: 250px;" loop autoplay></lottie-player>
+            <h1 class="handwriting">Hey... ✨</h1>
+            <p class="fade-in">Kaafi himmat juta kar ye link bhej raha hoon. I know humari baat nahi ho rahi, par kuch baatein kehni thi.</p>
+            <button class="btn-fancy" onclick="showNext('screen3')">Will you listen? 🙏</button>
+        </div>
+
+        <div id="screen3" class="screen">
+            <h2 class="title">It's been a long wait...</h2>
+            <div class="glass-card">
+                <p>3 saal ho gaye, par kuch baatein dil se nahi nikal pati. I know maine pareshan kiya aur tumne block bhi kiya, I'm really sorry for that.</p>
+                <p>Main bas darta tha tumhe khone se, isliye shayad sahi tarike se behave nahi kar paya.</p>
+            </div>
+            <button class="btn-fancy" onclick="showNext('screen4')">Mere dil ki baat ✍️</button>
+        </div>
+
+        <div id="screen4" class="screen">
+            <div class="glass-card">
+                <p>Tum sach mein bahut cute ho, aur tumhara gussa hona bhi jayaz hai. Main bas ek <b>Fresh Start</b> chahta hoon.</p>
+                <p>Bas ek normal dosti, jahan tum comfortable raho. Main promise karta hoon, main tumhe pareshan nahi karunga. Bas tumhara saath kaafi hai.</p>
+            </div>
+            <button class="btn-fancy" onclick="showNext('screen5')">One last thing... 🎈</button>
+        </div>
+
+        <div id="screen5" class="screen">
+            <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_y8p6v89r.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+            <h2 class="question">Friends again? 🤝</h2>
+            <p class="sub-text">Purani baatein bhula kar...</p>
+            
+            <div class="btn-group">
+                <button class="btn-action yes" onclick="sendResponse('YES! Let\'s be friends')">Yes, let's talk!</button>
+                <button id="noBtn" class="btn-action no">Still Mad 😤</button>
+            </div>
+        </div>
+
+        <div id="final-screen" class="screen">
+            <h2 class="handwriting">Thank you! ❤️</h2>
+            <p>Aapka message mujh tak pahunch gaya hai. I'll wait for you.</p>
+        </div>
+    </div>
+
+    <form id="responseForm" action="https://formspree.io/f/YOUR_ID" method="POST" style="display:none;">
+        <input type="text" name="UserResponse" id="responseInput">
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
