@@ -9,14 +9,13 @@ body {
     padding: 0;
     font-family: 'Quicksand', sans-serif;
     background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-    /* min-height use kiya taaki content kate nahi */
-    min-height: 100vh;
+    height: 100vh;
     display: flex; 
     justify-content: center; 
     align-items: center;
+    /* overflow hidden rakha hai, par mobile ke liye x-axis safe kiya hai */
+    overflow: hidden; 
     color: #2d3436;
-    /* overflow hidden mobile par problem karta hai isliye auto rakha */
-    overflow-x: hidden; 
 }
 
 .screen {
@@ -27,13 +26,11 @@ body {
     width: 90%; 
     max-width: 400px;
     animation: fadeIn 0.8s ease;
-    /* Extra safety for centering */
+    /* Isse mobile par side margins maintain rahengi */
     box-sizing: border-box;
 }
 
-.screen.active { 
-    display: flex; 
-}
+.screen.active { display: flex; }
 
 .glass-card {
     background: rgba(255, 255, 255, 0.7);
@@ -44,7 +41,8 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     margin: 20px 0;
     line-height: 1.6;
-    width: 100%; /* Card ko flexible rakha */
+    /* Card ki width mobile par bahar na nikalne ke liye */
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -59,22 +57,18 @@ body {
     box-shadow: 0 8px 15px rgba(162, 155, 254, 0.3);
 }
 
+/* Button Group with Space - Centering Fix */
 .btn-group {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Mobile ke liye gap thoda kam kiya (40px se 20px) */
+    gap: 40px; 
     margin-top: 30px;
     width: 100%;
     position: relative;
     height: 60px;
-}
-
-/* Desktop ke liye bada gap wapas de dete hain agar screen badi ho */
-@media (min-width: 600px) {
-    .btn-group {
-        gap: 40px;
-    }
+    /* Taki mobile par buttons overlap ya bahar na jayein */
+    flex-wrap: nowrap; 
 }
 
 .btn-action {
@@ -84,11 +78,31 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: 0.2s ease;
-    white-space: nowrap; /* Button text ek line mein rahega */
 }
 
-.yes { background: var(--success); color: white; box-shadow: 0 5px 15px rgba(85, 239, 196, 0.4); }
-.no { background: var(--danger); color: white; position: relative; z-index: 10; }
+/* Aapka original color aur effects wapas */
+.yes { 
+    background: var(--success); 
+    color: white; 
+    box-shadow: 0 5px 15px rgba(85, 239, 196, 0.4); 
+}
+
+.no { 
+    background: var(--danger); 
+    color: white; 
+    position: relative; 
+    z-index: 10; 
+}
+
+/* Mobile Screen Specific Fix (360px - 480px) */
+@media (max-width: 480px) {
+    .btn-group {
+        gap: 20px; /* Choti screen par gap thoda kam takki text center rahe */
+    }
+    .btn-action {
+        padding: 12px 20px; /* Mobile par buttons thode compress honge par dikhenge sahi */
+    }
+}
 
 @keyframes fadeIn { 
     from { opacity: 0; transform: scale(0.95); } 
