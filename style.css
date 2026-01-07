@@ -13,7 +13,6 @@ body {
     display: flex; 
     justify-content: center; 
     align-items: center;
-    /* overflow hidden rakha hai, par mobile ke liye x-axis safe kiya hai */
     overflow: hidden; 
     color: #2d3436;
 }
@@ -26,11 +25,12 @@ body {
     width: 90%; 
     max-width: 400px;
     animation: fadeIn 0.8s ease;
-    /* Isse mobile par side margins maintain rahengi */
-    box-sizing: border-box;
+    box-sizing: border-box; /* Centering fix for mobile */
 }
 
-.screen.active { display: flex; }
+.screen.active { 
+    display: flex; 
+}
 
 .glass-card {
     background: rgba(255, 255, 255, 0.7);
@@ -41,14 +41,13 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     margin: 20px 0;
     line-height: 1.6;
-    /* Card ki width mobile par bahar na nikalne ke liye */
     width: 100%;
     box-sizing: border-box;
 }
 
 .btn-fancy {
-    background: var(--primary);
-    color: white; 
+    background: var(--primary) !important; /* Force Color */
+    color: white !important; 
     border: none;
     padding: 14px 35px; 
     border-radius: 50px;
@@ -57,18 +56,22 @@ body {
     box-shadow: 0 8px 15px rgba(162, 155, 254, 0.3);
 }
 
-/* Button Group with Space - Centering Fix */
 .btn-group {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px; 
+    gap: 20px; /* Mobile safe gap */
     margin-top: 30px;
     width: 100%;
     position: relative;
     height: 60px;
-    /* Taki mobile par buttons overlap ya bahar na jayein */
-    flex-wrap: nowrap; 
+}
+
+/* Desktop par wapas bada gap */
+@media (min-width: 600px) {
+    .btn-group {
+        gap: 40px;
+    }
 }
 
 .btn-action {
@@ -80,28 +83,18 @@ body {
     transition: 0.2s ease;
 }
 
-/* Aapka original color aur effects wapas */
+/* Colors fixed with !important to ensure they show up */
 .yes { 
-    background: var(--success); 
-    color: white; 
+    background-color: var(--success) !important; 
+    color: white !important; 
     box-shadow: 0 5px 15px rgba(85, 239, 196, 0.4); 
 }
 
 .no { 
-    background: var(--danger); 
-    color: white; 
+    background-color: var(--danger) !important; 
+    color: white !important; 
     position: relative; 
     z-index: 10; 
-}
-
-/* Mobile Screen Specific Fix (360px - 480px) */
-@media (max-width: 480px) {
-    .btn-group {
-        gap: 20px; /* Choti screen par gap thoda kam takki text center rahe */
-    }
-    .btn-action {
-        padding: 12px 20px; /* Mobile par buttons thode compress honge par dikhenge sahi */
-    }
 }
 
 @keyframes fadeIn { 
